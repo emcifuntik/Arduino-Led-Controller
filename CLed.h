@@ -23,12 +23,6 @@ public:
 		Blue
 	};
 
-private:
-	void SetLedBrightness(CLed::LED led, uint8_t brightness) {
-		this->brightness[led] = brightness ^ 255;
-	}
-
-public:
 	CLed(uint8_t redPin, uint8_t greenPin, uint8_t bluePin) {
 		pins[LED::Red] = redPin;
 		pins[LED::Green] = greenPin;
@@ -37,6 +31,10 @@ public:
 		pinMode(pins[LED::Red], OUTPUT);
 		pinMode(pins[LED::Green], OUTPUT);
 		pinMode(pins[LED::Blue], OUTPUT);
+	}
+	
+	void SetLedBrightness(CLed::LED led, uint8_t brightness) {
+		this->brightness[led] = brightness ^ 255;
 	}
 
 	uint8_t GetLedBrightness(CLed::LED led) {
